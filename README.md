@@ -1,5 +1,7 @@
 # Masked Autoencoders Are Scalable Vision Learners with PyTorch
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/teddyld/mae-torch/blob/main/mae.ipynb)
+
 A PyTorch implementation of Masked Autoencoders Are Scalable Vision Learners [1]. Credits to Sayak and Aritra for their well-documented Tensorflow implementation at <a href="https://github.com/ariG23498/mae-scalable-vision-learners">mae-scalable-vision-learners</a>
 
 <div align="center">
