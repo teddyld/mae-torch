@@ -1,12 +1,52 @@
-# Masked Autoencoders Are Scalable Vision Learners with PyTorch
+# Masked Autoencoders Are Scalable Vision Learners with PyTorch in Juypter Notebook
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/teddyld/mae-torch/blob/main/mae.ipynb)
+A PyTorch implementation of Masked Autoencoders Are Scalable Vision Learners [1] by IcarusWizard at <a href="https://github.com/IcarusWizard/MAE">MAE</a> converted into Jupyter notebook format with some quality-of-life utility features such as an early stopper and ETA tracking. The version of Pytorch has also been updated from `1.10.1` to `2.3.0`.
 
-A PyTorch implementation of Masked Autoencoders Are Scalable Vision Learners [1]. Credits to Sayak and Aritra for their well-documented Tensorflow implementation at <a href="https://github.com/ariG23498/mae-scalable-vision-learners">mae-scalable-vision-learners</a>
+The model has been tested on the CIFAR10 dataset due to limitations in compute resources; models have been trained on a 3060Ti graphics card.
 
 <div align="center">
   <img src=assets/mae.png/><br>
   <small>Source: <a href=https://arxiv.org/abs/2111.06377>Masked Autoencoders Are Scalable Vision Learners</a></small>
+</div><br>
+
+## Installation
+
+`pip install -r requirements.txt`
+
+## Usage
+
+Run the cells inside of notebooks `mae_pretrain.ipynb` and `mae_classifier.ipynb`.
+
+See logs using `tensorboard --logdir logs`.
+
+## Results
+
+### Loss
+
+With a patience of 30 epochs, early stopping triggered on MAE training at 1,883 epochs. However, loss is still trending towards decrease. Results could be improved by increasing the patience of the early stopper.
+
+<div align="center">
+  <img src=assets/mae_loss.JPG/><br>
+  <small>MAE training loss</small>
+</div><br>
+
+<div align="center">
+  <img src=assets/mae_classification_loss.JPG/><br>
+  <small>Classification train and validation loss</small>
+</div><br>
+
+### Accuracy
+
+| Model              | Validation Accuracy |
+| ------------------ | ------------------- |
+| ViT-T w/o pretrain | 71.8                |
+| ViT-T w/ pretrain  | **85.64**           |
+
+There is significantly less overfitting in the model results with MAE pretraining
+
+<div align="center">
+  <img src=assets/mae_classification_accuracy.JPG/><br>
+  <small>Train vs. validation accuracy</small>
 </div><br>
 
 ## References
