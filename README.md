@@ -51,6 +51,12 @@ There is significantly less overfitting in the model results with MAE pretrainin
 
 Weights are available in [GitHub Release](https://github.com/teddyld/mae-torch/releases/tag/v1.0.0)
 
+## Future work
+
+I am also doing my own research into the application of MAE in engagement detection on the much larger DAiSEE dataset so I will be releasing weights on that in future releases
+
+- [ ] Release DAiSEE weights
+
 ## References
 
 [1] Masked Autoencoders Are Scalable Vision Learners; He et al.; arXiv 2021; https://arxiv.org/abs/2111.06377.
