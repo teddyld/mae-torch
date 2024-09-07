@@ -49,6 +49,8 @@ There is significantly less overfitting in the model results with MAE pretrainin
   <small>Train vs. validation accuracy</small>
 </div><br>
 
+Weights are available in [GitHub Release](https://github.com/teddyld/mae-torch/releases/tag/v1.0.0)
+
 ## References
 
 [1] Masked Autoencoders Are Scalable Vision Learners; He et al.; arXiv 2021; https://arxiv.org/abs/2111.06377.
