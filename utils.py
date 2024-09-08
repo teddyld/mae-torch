@@ -1,6 +1,10 @@
 import random
 import torch
 import numpy as np
+import os
+import cv2
+
+from torch.utils.data import Dataset
 
 def setup_seed(seed=42):
     torch.manual_seed(seed)
@@ -34,3 +38,23 @@ class EarlyStopper:
     
     def get_patience(self):
         return self.patience
+
+# Modify the format of the dataset paths if required
+class ImageDataset(Dataset):
+    def __init__(self, root, train=True, transform=None):
+        self.data = os.path.join(root, 'Dataset', 'Train' if train else 'Validation')
+        self.labels = np.load(os.path.join(root, 'Labels', f"{'Train' if train else 'Validation'}_labels.npy"))
+        self.transform = transform
+        self.ttv = "Train" if train else "Validation"
+
+    def __len__(self):
+        return len(self.labels)
+
+    def __getitem__(self, idx):
+        image_name =  self.ttv + "_" + str(idx) + ".jpg"
+        image = cv2.imread(os.path.join(self.data, image_name), cv2.IMREAD_GRAYSCALE)
+        label = torch.tensor(self.labels[idx], dtype=torch.uint8)
+        
+        if self.transform:
+            image = self.transform(image)
+        return image, label
