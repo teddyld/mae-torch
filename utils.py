@@ -42,7 +42,7 @@ class EarlyStopper:
 # Modify the format of the dataset paths if required
 class ImageDataset(Dataset):
     def __init__(self, root, train=True, transform=None):
-        self.data = os.path.join(root, 'Dataset', 'Train' if train else 'Validation')
+        self.data = os.path.join(root, 'DataSet', 'Train' if train else 'Validation')
         self.labels = np.load(os.path.join(root, 'Labels', f"{'Train' if train else 'Validation'}_labels.npy"))
         self.transform = transform
         self.ttv = "Train" if train else "Validation"
@@ -52,7 +52,7 @@ class ImageDataset(Dataset):
 
     def __getitem__(self, idx):
         image_name =  self.ttv + "_" + str(idx) + ".jpg"
-        image = cv2.imread(os.path.join(self.data, image_name), cv2.IMREAD_GRAYSCALE)
+        image = cv2.imread(os.path.join(self.data, image_name))
         label = torch.tensor(self.labels[idx], dtype=torch.uint8)
         
         if self.transform:
