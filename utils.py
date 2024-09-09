@@ -3,6 +3,7 @@ import torch
 import numpy as np
 import os
 import cv2
+from PIL import Image
 
 from torch.utils.data import Dataset
 
@@ -52,7 +53,7 @@ class ImageDataset(Dataset):
 
     def __getitem__(self, idx):
         image_name =  self.ttv + "_" + str(idx) + ".jpg"
-        image = cv2.imread(os.path.join(self.data, image_name))
+        image = Image.open(os.path.join(self.data, image_name))
         label = torch.tensor(self.labels[idx], dtype=torch.uint8)
         
         if self.transform:
